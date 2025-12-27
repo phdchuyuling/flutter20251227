@@ -1,0 +1,27 @@
+一、總覽：
+需求規格 → 資料結構設計 → 核心遊戲邏輯實作 → AI 演算法 → UI 實作（輸入/互動） → 測試 → 效能優化 → 打包/部署 → 維護/CI
+
+二、需求（要先確認）
+支援平台：Web / Android 
+玩家對象：單機和AI程式對戰
+
+三、資料結構
+代表棋盤：一維陣列長度 64（8x8）或二維陣列。
+棋子值：空=0、黑=1、白=-1。
+Game 狀態：透過 VSCode AI 開發
+
+四、核心邏輯：AI 取得網路程式設計六、UI 實作要點（以 Flutter 為例）
+
+分層：將 UI 和 Game 邏輯分離（game.dart、ai.dart、main.dart）。
+棋盤 Grid：
+使用 GridView 或 Table，每格 GestureDetector 觸發 onTap 呼叫 Game.makeMove。
+cell widget 顯示棋子（CircleAvatar 或 Container）或 legal indicator。
+控制列：
+按鈕（ElevatedButton.icon）: 重新開始、悔棋（與 keyboard shortcut）。
+下拉（DropdownButton）: 調整 AI 速度/難度。
+動畫/Highlight：
+採用 AnimatedOpacity 或 AnimatedContainer 來顯示 AI 翻轉或強調步驟。
+鍵盤支援（桌面/鍵盤環境）：
+使用 Shortcuts + Actions + Focus 綁定 Ctrl+Z 等。
+響應式布局：
+使用 Wrap 或 LayoutBuilder 避免窄螢幕下溢出（你已採用 Wrap 兩行布局）。
